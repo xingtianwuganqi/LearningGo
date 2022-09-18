@@ -16,7 +16,10 @@ func main() {
 	//variable()
 
 	// 常量
-	constactValue()
+	//constactValue()
+
+	// 基础数据类型
+	dataType()
 }
 
 // go的源码文件 bin src pkg
@@ -168,4 +171,77 @@ func constactValue() {
 		// 显示指定类型的时候，必须确保常量左右值类型一致，需要时可做类型转换，
 		这与变量不同，变量可以是不同的类型值
 	*/
+
+	//iota
+	/*
+		iota，特殊常量，可以认为是一个可以被编译器修改的常量
+		每当定义一个const，iota的初始值为0
+		每当定义一个常量，iota就会自动累加1
+		直到下一个const出现，清零
+	*/
+	const (
+		h = iota
+		i = iota
+		j = iota
+	)
+
+	const (
+		k = iota
+		l
+	)
+
+	const (
+		m = iota // iota 0
+		n = 1    // iota 1
+		o = "q"  // iota 2
+		p        //p和上一个常量的值一样， iota 自增到3
+		q = iota //iota 自增到4
+	)
+
+	fmt.Println(h, i, j)
+	fmt.Println(k, l)
+
+	fmt.Println(m, n, o, p, q)
+}
+
+func dataType() {
+	/*
+		布尔类型
+		数值类型
+			整型：int int8 int16 ...
+				uint8 uint16 ...
+			浮点型：float32 float64
+			complex64：32位实数和虚数 complex128：64位实数和虚数
+			byte：类似uint8
+			rune：类似int32
+
+		字符串
+		array
+		slice
+		map
+		function
+		pointer
+		struct
+		interface
+		channel
+	*/
+
+	var b1 bool
+	b1 = true
+	var b2 bool = false
+	fmt.Printf("%T,%t\n", b1, b1)
+	fmt.Printf("%T,%t\n", b2, b2)
+
+	var i1 int8 = -100
+	var i2 int16 = 10000
+	var i3 int32 = 199999999
+	fmt.Println(i1, i2, i3)
+
+	var i4 uint8 = 100
+	fmt.Println(i4)
+
+	// int和int64是不同类型
+	var i5 int = 100
+	fmt.Printf("%T,%d\n", i5, i5)
+
 }
