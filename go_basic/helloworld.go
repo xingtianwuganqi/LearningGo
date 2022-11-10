@@ -3,6 +3,9 @@ package main // 同文件下包名应该一致
 import (
 	"fmt"
 	"math/rand"
+	"sort"
+	"strconv"
+	"strings"
 )
 
 // import(
@@ -32,7 +35,27 @@ func main() {
 	//arrayValue()
 
 	// map
-	mapValue()
+	//mapValue()
+
+	// 字符串
+	//stringValue()
+	// 函数
+	//var sum = addFunction(20)
+	// 多个参数
+	//var sum = getAdd(10, 20)
+	// 可变参数
+	//var sum = changeParam(1, 2, 3, 4, 5)
+	// 可变参数传入切片
+	//s1 := []int{1, 2, 3, 4, 5}
+	//var sum = changeParam(s1...)
+	//fmt.Println(sum)
+
+	// 函数返回值
+	returnSum()
+	returnSum2()
+	per, area := rectangle(100, 100)
+	fmt.Println(per, area)
+	rectangle2(200, 300)
 }
 
 // go的源码文件 bin src pkg
@@ -145,6 +168,7 @@ func variable() {
 	fmt.Println(s3)
 }
 
+// MARK: 常量
 func constactValue() {
 	const test string = "abc"
 	// 隐式定义：
@@ -676,4 +700,231 @@ func mapValue() {
 
 	// 长度
 	fmt.Println(len(map1))
+
+	// map遍历
+	/*
+		for range
+		map: key,value
+	*/
+	for key, value := range map1 {
+		fmt.Println(key, value)
+	}
+
+	map5 := make(map[int]string)
+	map5[1] = "红"
+	map5[2] = "绿"
+	map5[3] = "黑"
+
+	// key连续时可以使用
+	for i := 0; i < len(map5); i++ {
+		fmt.Println(i, "---->", map5[i])
+	}
+
+	/*
+		1.获取所有的key，存到切片/数组中
+		2.进行排序
+		3.遍历key， ---> map[key]
+
+	*/
+	// 初始化一个数组
+	keys := make([]int, 0, len(map5))
+	fmt.Println(keys)
+
+	// 遍历map，获取所有的key
+	for k, _ := range map5 {
+		keys = append(keys, k)
+	}
+	fmt.Println(keys)
+
+	// 排序
+	sort.Ints(keys)
+	fmt.Println(keys)
+	for _, key := range keys {
+		fmt.Println(key, map5[key])
+	}
+	// 数组存储map
+
+	map6 := make(map[string]string)
+	map6["name"] = "呵呵"
+	map6["age"] = "18"
+
+	map7 := make(map[string]string)
+	map7["name"] = "滴滴"
+	map7["age"] = "20"
+
+	arr := make([]map[string]string, 0, 3)
+	arr = append(arr, map6)
+	arr = append(arr, map7)
+
+	for i, val := range arr {
+		fmt.Println(i, val)
+	}
+
+	// map是引用类型
+}
+
+func stringValue() {
+	/*
+		字符串是一些字节的集合。
+		可以理解为一个字符的序列
+		每个字符都有固定的位置（下标、索引）
+	*/
+	s1 := "hello world"
+	fmt.Println(s1)
+	fmt.Println(len(s1))
+
+	// 获取某个字节
+	fmt.Println(s1[0])
+
+	for i := 0; i < len(s1); i++ {
+		fmt.Printf("%c\n", s1[i])
+	}
+
+	for _, v := range s1 {
+		fmt.Printf("%c\n", v)
+	}
+
+	// 字符串是字节的集合
+	slice1 := []byte{65, 66, 68, 69}
+	s2 := string(slice1) // 根据一个字节切片，构建字符串
+	fmt.Println(s2)
+
+	s3 := "abcde"
+	slice2 := []byte(s3)
+	fmt.Println(slice2)
+
+	//字符串不能使用下标修改
+	//s3[2] = "B"
+	//fmt.Println(s3)
+
+	/*
+		string常用的函数
+	*/
+
+	c1 := "helloworld"
+	fmt.Println(c1)
+	// 是否包含指定的内容
+	fmt.Println(strings.Contains(c1, "h"))
+	// 是否包含任意字符
+	fmt.Println(strings.ContainsAny(c1, "bor"))
+	// 统计出现的次数
+	fmt.Println(strings.Count(c1, "or"))
+
+	// 以xxx前缀开头
+	fmt.Println(strings.HasPrefix(c1, "he"))
+	// 以xxx结尾
+	fmt.Println(strings.HasSuffix(c1, "ld"))
+
+	// 截取字符串
+	/*
+		str[start:end] -> substr
+	*/
+	c2 := c1[:5]
+	fmt.Println(c2)
+
+	// 字符串和其他类型的转换
+	d1 := "true"
+	d2, err := strconv.ParseBool(d1)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Printf("%T,%t", d2, d2)
+}
+
+// 函数
+func addFunction(n int) int {
+	/*
+		概念：具有特定功能的代码，可以被多次调用执行
+		1.可以避免重复使用
+		2增加函数的扩展性
+		main: 程序的入口，是一个特殊的函数
+		3.注意事项：
+			a.函数必须先定义
+			b.函数名不能冲突
+			c.main函数系统自动调用
+
+	*/
+	//return 10 + 2
+	sum := 0
+	for i := 1; i <= n; i++ {
+		sum = sum + i
+	}
+	return sum
+}
+
+func getAdd(a int, b int) int {
+	sun := a + b
+	for i := 0; i < 10; i++ {
+		sun += i
+	}
+	return sun
+}
+
+func changeParam(nums ...int) int {
+	/*
+		1.如果函数的参数是可变参数，同时还有其他参数，那么可变参数要放在列表的最后
+		2.一个函数的参数列表中最多只能有一个可变参数
+	*/
+	/*
+		参数的传递
+		a.值传递：传递的是数据的副本，修改数据，对于原始的数据没有影响，值类型的数据，默认都是值传递，基础类型，array, struct
+		b.引用传递：传递的事数据地址，引导多个变量指向同一块内存，所有的引用类型都是引用传递：slice、map、chan
+	*/
+	sum := 0
+	for i := 0; i < len(nums); i++ {
+		sum = sum + nums[i]
+	}
+	return sum
+}
+
+// 定义函数时，直接指定要返回的对象
+func returnSum() (sum int) {
+	//for i := 0; i < 100; i++ {
+	//	sum += 1
+	//}
+	fmt.Println(sum)
+	return
+}
+
+func returnSum2() (sum int) {
+	fmt.Println(sum) // sum有默认值
+	for i := 0; i < 100; i++ {
+		sum += 1
+	}
+	fmt.Println(sum)
+	return // 代表返回sum
+}
+
+// 返回多个值
+func returnParam() (string, int) {
+	return "hello", 3
+}
+
+/*
+return语句:
+一个函数的定义有返回值，那么函数中必须使用return语句，将结果返回给调用处
+函数的返回的结果，必须和函数定义的一致：类型，个数，顺序
+
+1.将函数的结果返回给调用处
+2.同时结束了改函数的执行
+
+空白标识符，专门用户舍弃数据：_
+
+注意点：
+1.一个函数定义了返回值，必须使用return语句将结果返回给调用处，return后的数据必须和函数定义的一致：个数，类型，顺序
+2.可以使用_舍弃多余的返回值
+3.如果一个函数定义了有返回值，那么函数中有分、循环，那么要保证无论执行了哪个分支，都要有return语句被执行
+4.如果函数没有返回值，也可以使用return结束函数
+*/
+
+func rectangle(len, wid float64) (float64, float64) {
+	perimeter := (len + wid) * 2
+	area := len * wid
+	return perimeter, area
+}
+
+func rectangle2(len, wid float64) (perimeter float64, area float64) {
+	perimeter = (len + wid) * 2
+	area = len * wid
+	return
 }
