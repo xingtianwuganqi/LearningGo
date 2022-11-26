@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbfdd586-15bb-493c-b548-297ed118c122" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/d_method.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/function.go" beforeDir="false" afterPath="$PROJECT_DIR$/b_function.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helloworld.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/struct.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/c_struct.go" beforeDir="false" afterPath="$PROJECT_DIR$/c_struct.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
