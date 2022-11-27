@@ -166,6 +166,22 @@ type Student1 struct {
 	school string
 }
 
+/*
+方法的模拟继承
+*/
+// 父类的方法
+func (p Person1) eat() {
+	fmt.Println(p.name, "吃东西")
+}
+
+func (s Student1) book() {
+	fmt.Println(s.name, "书本")
+}
+
+func (s Student1) eat() {
+	fmt.Println(s.name, "吃了点东西")
+}
+
 func oopTest() {
 	// 1.创建父类的对象
 	p1 := Person1{name: "张三", age: 30}
@@ -194,4 +210,15 @@ func oopTest() {
 		那么Person1中的字段，对于Student1来讲，就是提升字段
 		Student1对象直接访问Person1中的字段
 	*/
+
+	// 模拟方法继承
+	p1.eat()
+	s1.eat() // 子类对象，访问父类方法
+
+	// 方法的扩展
+	s1.book() // 子类对象，访问自己新增的方法
+	p1.eat()
+	
+	// 如果存在方法的重写，子类对象访问重写的方法
+	s1.eat()
 }
