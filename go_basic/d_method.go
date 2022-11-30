@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 func main() {
 
@@ -11,7 +14,13 @@ func main() {
 	//interfaceType()
 
 	// 接口嵌套
-	manyInterface()
+	//manyInterface()
+
+	// 接口断言
+	//duanyanTest()
+
+	//type 关键字
+	typeTest()
 }
 
 /*
@@ -252,4 +261,102 @@ func manyInterface() {
 	d1.test1()
 	d1.test2()
 	d1.test3()
+}
+
+/*
+接口断言：判断接口类型具体是那种结构体
+方式一：
+1.instace := 接口对象.(实际类型) // 不安全，会panic()
+2. instace, ok := 接口对象.(实际类型) // 安全
+
+方式二：
+switch instance := 接口对象.(type) {
+	case 实际类型1：
+		...
+	case 实际类型2:
+		...
+	...
+}
+
+*/
+
+// 接口A是空接口，理解为代表了任意类型
+func interfaceDuanyan(a USB) {
+	fmt.Println(a)
+	// 断言，重新生成数据
+	if ins, ok := a.(Mouse); ok {
+		fmt.Println(ins.name)
+	} else if ins, ok := a.(FlashDisk); ok {
+		fmt.Println(ins.name)
+	} else {
+		fmt.Println("未知类型")
+	}
+
+	switch ins := a.(type) {
+	case Mouse:
+		fmt.Println(ins.name)
+	case FlashDisk:
+		fmt.Println(ins.name)
+	default:
+		break
+	}
+}
+
+func duanyanTest() {
+	m1 := Mouse{"罗技小黑"}
+	//fmt.Println(m1.name)
+
+	f1 := FlashDisk{"闪存"}
+	//fmt.Println(f1.name)
+
+	var usb USB
+	usb = m1
+
+	var usb2 USB
+	usb2 = f1
+
+	interfaceDuanyan(usb)
+	interfaceDuanyan(usb2)
+
+}
+
+/*
+type: 用于类型定义和类型别名
+1.类型定义：type 类型名 Type
+2.类型别名：type 类型名 = Type
+*/
+// 1.定义新类型，与旧类型不通用
+type myInt int
+type myStr string
+
+// 定义函数类型
+type myfun func(int, int) string
+
+func func12() myfun {
+	fun := func(a, b int) string {
+		s := strconv.Itoa(a) + strconv.Itoa(b)
+		return s
+	}
+	return fun
+}
+
+// 3.定义别名
+type intF = int // 不是重新定义新的数据类型，只是起别名，和原类型通用
+
+func typeTest() {
+	var i1 myInt
+	var i2 = 100
+	i1 = 200
+	//i1 = i2  // 不是同一个类型，不能赋值
+	fmt.Println(i1, i2)
+	fmt.Printf("%T,%T", i1, i2)
+
+	// 使用定义方法
+	res1 := func12()
+	fmt.Println(res1(10, 20))
+
+	var i3 intF = 100
+	var i4 int = 500
+	i3 = i4
+	fmt.Println(i3)
 }
