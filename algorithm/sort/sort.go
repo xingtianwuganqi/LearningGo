@@ -65,3 +65,20 @@ func InsertionSort(arr []int) []int {
 	}
 	return arr
 }
+
+// 快速排序
+//func QuickSort(arr []int, left, right int) []int {
+//	if left > right {
+//		return []int{}
+//	}
+//	i := left
+//	j := right
+//	// 记录基准书pivoty
+//	key := arr[i]
+//	for i < j {
+//		for i < j && key <= arr[j] {
+//			j--
+//		}
+//
+//	}
+//}
