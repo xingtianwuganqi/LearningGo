@@ -5,23 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbfdd586-15bb-493c-b548-297ed118c122" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/e_error.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../package/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packagetest/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packagetest/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packagetest/.idea/packagetest.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packagetest/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packagetest/go.mod" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packagetest/main.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packagetest/pk1/test2.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packagetest/pk2/test3.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packagetest/utils/test1.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../packagetest/utils/util.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/LearningGo.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../package/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../package/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packagetest/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/../packagetest/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../packagetest/utils/util.go" beforeDir="false" afterPath="$PROJECT_DIR$/../packagetest/utils/util.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,20 +56,20 @@
   }
 }</component>
   <component name="RunManager" selected="Go Build.go build b_function.go">
+    <configuration name="go build a_helloworld.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="go_basic" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/a_helloworld.go" />
+      <method v="2" />
+    </configuration>
     <configuration name="go build b_function.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="go_basic" />
       <working_directory value="$PROJECT_DIR$" />
       <kind value="FILE" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$/b_function.go" />
-      <method v="2" />
-    </configuration>
-    <configuration name="go build c_struct.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="go_basic" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="FILE" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$/c_struct.go" />
       <method v="2" />
     </configuration>
     <configuration name="go build d_method.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
@@ -112,10 +99,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Go Build.go build b_function.go" />
+        <item itemvalue="Go Build.go build a_helloworld.go" />
         <item itemvalue="Go Build.go build f_package.go" />
         <item itemvalue="Go Build.go build e_error.go" />
         <item itemvalue="Go Build.go build d_method.go" />
-        <item itemvalue="Go Build.go build c_struct.go" />
       </list>
     </recent_temporary>
   </component>

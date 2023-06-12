@@ -2,6 +2,7 @@ package main
 
 import (
 	"packagetest/pk1"
+	_ "packagetest/utils"
 )
 
 func main() {
@@ -34,6 +35,7 @@ main函数只能用于main包中，且只能定义一个。
 
 避免出现循环 import，例如：A->B->C->A;
 一个包被其他多个包import，但只能被初始化一次
+_ 操作，其实是引入该包，而不是直接使用包里面的函数，仅仅调用了该包下的init()函数。
 */
 /*
 关于包的使用：

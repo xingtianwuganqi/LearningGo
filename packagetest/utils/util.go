@@ -3,13 +3,13 @@ package utils
 import "fmt"
 
 func init() {
-	fmt.Println("init方法被调用")
+	fmt.Println("util文件下init方法被调用")
 }
 
 func init() {
-	fmt.Println("另一个init函数")
+	fmt.Println("util文件下另一个init函数")
 }
 
 func Count() {
-	fmt.Println("Count方法被调用")
+	fmt.Println("util文件下Count方法被调用")
 }
