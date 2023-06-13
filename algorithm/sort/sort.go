@@ -67,18 +67,51 @@ func InsertionSort(arr []int) []int {
 }
 
 // 快速排序
-//func QuickSort(arr []int, left, right int) []int {
-//	if left > right {
-//		return []int{}
-//	}
-//	i := left
-//	j := right
-//	// 记录基准书pivoty
-//	key := arr[i]
-//	for i < j {
-//		for i < j && key <= arr[j] {
-//			j--
-//		}
-//
-//	}
-//}
+/*
+快速排序（Quick Sort）是由东尼·霍尔所发展的一种排序算法。在平均状况下，排序 n 个项目要Ο(n log n)次比较。
+在最坏状况下则需要Ο(n2)次比较，但这种状况并不常见。事实上，快速排序通常明显比其他Ο(n log n) 算法更快，
+因为它的内部循环（inner loop）可以在大部分的架构上很有效率地被实现出来。
+快速排序使用分治法（Divide and conquer）策略来把一个串行（list）分为两个子串行（sub-lists）。
+
+从数列中挑出一个元素，称为 “基准”（pivot），
+重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。
+在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作。
+递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序。
+递归的最底部情形，是数列的大小是零或一，也就是永远都已经被排序好了。虽然一直递归下去，
+但是这个算法总会退出，因为在每次的迭代（iteration）中，它至少会把一个元素摆到它最后的位置去。
+*/
+func QuickSort(arr []int, left, right int) []int {
+	if left > right {
+		return []int{}
+	}
+	i := left
+	j := right
+	// 记录基准书pivoty
+	key := arr[i]
+	for i < j {
+		//首先从右边j开始查找(从最右边往左找)比基准数(key)小的值<---
+		for i < j && key <= arr[j] {
+			j--
+		}
+		//如果从右边j开始查找的值[array[j] integerValue]比基准数小，则将查找的小值调换到i的位置
+		if i < j {
+			arr[i] = arr[j]
+		}
+		//从i的右边往右查找到一个比基准数小的值时，就从i开始往后找比基准数大的值 --->
+		for i < j && arr[i] <= key {
+			i++
+		}
+		//如果从i的右边往右查找的值[array[i] integerValue]比基准数大，则将查找的大值调换到j的位置
+		if i < j {
+			arr[j] = arr[i]
+		}
+	}
+	//将基准数放到正确的位置，----改变的是基准值的位置(数组下标)---
+	arr[i] = key
+	//递归排序
+	//将i左边的数重新排序
+	QuickSort(arr, left, i-1)
+	//将i右边的数重新排序
+	QuickSort(arr, i+1, right)
+	return arr
+}

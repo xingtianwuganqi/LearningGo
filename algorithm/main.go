@@ -14,4 +14,7 @@ func main() {
 	fmt.Println(choseArr)
 	insertArr := sort.InsertionSort(arr)
 	fmt.Println(insertArr)
+
+	quickArr := sort.QuickSort(arr, 0, len(arr)-1)
+	fmt.Println(quickArr)
 }
