@@ -1,7 +1,8 @@
 package main
 
 import (
-	"algorithm/spider"
+	"algorithm/request"
+	//"algorithm/spider"
 	"fmt"
 )
 
@@ -18,5 +19,5 @@ func main() {
 	//quickArr := sort.QuickSort(arr, 0, len(arr)-1)
 	//fmt.Println(quickArr)
 
-	spider.GetHttp()
+	request.GetQuery()
 }
