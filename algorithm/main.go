@@ -2,7 +2,6 @@ package main
 
 import (
 	"algorithm/request"
-	//"algorithm/spider"
 	"fmt"
 )
 
@@ -20,4 +19,6 @@ func main() {
 	//fmt.Println(quickArr)
 
 	request.GetQuery()
+	//request.DetialQuery("60585128.html")
+	//request.DownLoadImg("https://i5.hoopchina.com.cn/hupuapp/bbs/917/99291917/1686564522_5091228IMG_5692.png?x-oss-process=image/resize,w_800/format,webp", "./imgs")
 }
