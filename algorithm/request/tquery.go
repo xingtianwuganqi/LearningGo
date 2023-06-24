@@ -12,7 +12,7 @@ import (
 )
 
 func GetQuery() {
-	url := "https://bbs.hupu.com/787" // 目标网站的URL
+	url := "https://bbs.hupu.com/love" // 目标网站的URL
 	// 发送HTTP GET请求
 	response, err := http.Get(url)
 	if err != nil {
@@ -105,7 +105,7 @@ func DetialQuery(url string) {
 		fmt.Println(detail_imgs)
 
 		for i := 0; i < len(image); i++ {
-			DownLoadImg(image[i], "./imgs")
+			DownLoadImg(image[i], "./images")
 		}
 	})
 }
