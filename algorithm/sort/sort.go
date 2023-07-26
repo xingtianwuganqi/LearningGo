@@ -32,11 +32,13 @@ func BubbleSort(x []int) []int {
 
 func ChoseSort(arr []int) []int {
 	for i := 0; i < len(arr); i++ {
+		var minIndex = i
 		for j := i + 1; j < len(arr); j++ {
-			if arr[i] > arr[j] {
-				arr[i] = arr[j]
+			if arr[minIndex] > arr[j] {
+				minIndex = j
 			}
 		}
+		arr[i], arr[minIndex] = arr[minIndex], arr[i]
 	}
 	return arr
 }
@@ -115,3 +117,4 @@ func QuickSort(arr []int, left, right int) []int {
 	QuickSort(arr, i+1, right)
 	return arr
 }
+
